@@ -1,0 +1,66 @@
+<div class="upload">
+  <file-upload
+    class="uploadBtn"
+    id="uploadOld"
+    label="Old friends JSON/HTML file"
+    (fileText)="onBeforeFriendsFileUpload($event)"
+  ></file-upload>
+  <button
+    class="detect"
+    mat-raised-button
+    color="primary"
+    (click)="onDetectFormerFriends()"
+  >
+    Show former friends
+  </button>
+  <file-upload
+    class="uploadBtn"
+    id="uploadCurrent"
+    label="Current friends JSON/HTML file"
+    (fileText)="onCurrentFriendsFileUpload($event)"
+  ></file-upload>
+</div>
+
+<div class="friends-containers">
+  <div>
+    <span *ngIf="oldFriends.length"
+      >Number of friends: {{ oldFriends.length }}</span
+    >
+    <div class="box">
+      <ng-container *ngFor="let oldFriend of oldFriends">
+        <mat-list>
+          <mat-list-item>{{ oldFriend }}</mat-list-item>
+          <mat-divider></mat-divider>
+        </mat-list>
+      </ng-container>
+    </div>
+  </div>
+
+  <div>
+    <span *ngIf="currentFriends.length"
+      >Number of friends: {{ currentFriends.length }}</span
+    >
+    <div class="box">
+      <ng-container *ngFor="let currentFriend of currentFriends">
+        <mat-list>
+          <mat-list-item>{{ currentFriend }}</mat-list-item>
+          <mat-divider></mat-divider>
+        </mat-list>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<div class="formerFriends">
+  <span *ngIf="formerFriends.length"
+    >Number of former friends: {{ formerFriends.length }}</span
+  >
+  <div class="box" *ngIf="formerFriends.length">
+    <ng-container *ngFor="let formerFriend of formerFriends">
+      <mat-list>
+        <mat-list-item>{{ formerFriend }}</mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<!-- <div class="container">
+  <label for="uploadFile">{{ label }}</label>
+  <input
+    #uploadFile
+    mat-raised-button
+    id="uploadFile"
+    type="file"
+    (change)="onChange($event.target.files)"
+  />
+
+  <button for="uploadFile" (click)="selectFile()">
+    <mat-icon>folder_open</mat-icon>
+  </button>
+</div> -->
+<label>{{ label }}</label>
+<input
+  #uploadFile
+  mat-raised-button
+  type="file"
+  accept=".json, .html"
+  (change)="onChange($event.target.files)"
+/>
