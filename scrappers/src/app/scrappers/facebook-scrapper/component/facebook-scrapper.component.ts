@@ -8,6 +8,7 @@ import { detectFormerFriends, friendsScrapper } from '../friends-scrapper';
 })
 export class FacebookScrapperComponent {
   formerFriends: string[] = [];
+  changesMessage = '';
   oldFriends: string[] = [];
   currentFriends: string[] = [];
 
@@ -15,12 +16,12 @@ export class FacebookScrapperComponent {
 
   onBeforeFriendsFileUpload(fileText: any): void {
     this.oldFriends = friendsScrapper(fileText);
-    this.formerFriends = [];
+    this.resetResultVars();
   }
 
   onCurrentFriendsFileUpload(fileText: any): void {
     this.currentFriends = friendsScrapper(fileText);
-    this.formerFriends = [];
+    this.resetResultVars();
   }
 
   onDetectFormerFriends(): void {
@@ -28,5 +29,14 @@ export class FacebookScrapperComponent {
       this.oldFriends,
       this.currentFriends
     );
+
+    if (!this.formerFriends.length) {
+      this.changesMessage = 'No changes found! You are a good friend! :)';
+    }
+  }
+
+  private resetResultVars(): void {
+    this.formerFriends = [];
+    this.changesMessage = '';
   }
 }

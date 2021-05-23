@@ -17,10 +17,10 @@ export class FileUploadComponent {
     const fileReader: FileReader = new FileReader();
     const self = this;
 
-    fileReader.onloadend = (x) => {
+    fileReader.onloadend = () => {
       self.fileText.emit(String(fileReader.result));
     };
 
-    fileReader.readAsText(file, '\u676f\u845b');
+    fileReader.readAsText(file);
   }
 }

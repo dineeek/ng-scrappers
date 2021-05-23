@@ -4,25 +4,37 @@
 
   .title {
     cursor: pointer;
+    font-family: cursive;
   }
 }
 
 .nav {
   width: 15vw;
+
+  .active {
+    background-color: darkslategray !important;
+    color: whitesmoke;
+  }
 }
 
 .content {
   margin: 30px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1200px) {
+  .nav {
+    width: 20vw;
+  }
+}
+
+@media screen and (max-width: 850px) {
   .nav {
     width: 35vw;
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
   .nav {
-    width: 40vw;
+    width: 50vw;
   }
 }

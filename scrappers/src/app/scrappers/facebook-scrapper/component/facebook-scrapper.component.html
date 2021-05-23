@@ -6,9 +6,10 @@
     (fileText)="onBeforeFriendsFileUpload($event)"
   ></file-upload>
   <button
-    class="detect"
+    class="detectBtn"
     mat-raised-button
     color="warn"
+    [disabled]="!(oldFriends.length && currentFriends.length)"
     (click)="onDetectFormerFriends()"
   >
     Show former friends
@@ -23,31 +24,31 @@
 
 <div class="friends-containers">
   <div>
-    <span *ngIf="oldFriends.length"
-      >Number of friends: {{ oldFriends.length }}</span
-    >
-    <div class="box">
-      <ng-container *ngFor="let oldFriend of oldFriends">
-        <mat-list>
-          <mat-list-item>{{ oldFriend }}</mat-list-item>
-          <mat-divider></mat-divider>
-        </mat-list>
-      </ng-container>
-    </div>
+    <ng-container *ngIf="oldFriends.length">
+      <span>Number of old friends: {{ oldFriends.length }}</span>
+      <div class="box">
+        <ng-container *ngFor="let oldFriend of oldFriends">
+          <mat-list>
+            <mat-list-item>{{ oldFriend }}</mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>
+        </ng-container>
+      </div>
+    </ng-container>
   </div>
 
   <div>
-    <span *ngIf="currentFriends.length"
-      >Number of friends: {{ currentFriends.length }}</span
-    >
-    <div class="box">
-      <ng-container *ngFor="let currentFriend of currentFriends">
-        <mat-list>
-          <mat-list-item>{{ currentFriend }}</mat-list-item>
-          <mat-divider></mat-divider>
-        </mat-list>
-      </ng-container>
-    </div>
+    <ng-container *ngIf="currentFriends.length">
+      <span>Number of current friends: {{ currentFriends.length }}</span>
+      <div class="box">
+        <ng-container *ngFor="let currentFriend of currentFriends">
+          <mat-list>
+            <mat-list-item>{{ currentFriend }}</mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>
+        </ng-container>
+      </div>
+    </ng-container>
   </div>
 </div>
 
@@ -55,6 +56,7 @@
   <span *ngIf="formerFriends.length"
     >Number of former friends: {{ formerFriends.length }}</span
   >
+  <span *ngIf="changesMessage">{{ changesMessage }}</span>
   <div class="box" *ngIf="formerFriends.length">
     <ng-container *ngFor="let formerFriend of formerFriends">
       <mat-list>
