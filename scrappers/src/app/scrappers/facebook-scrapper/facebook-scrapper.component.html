@@ -1,21 +1,19 @@
 <div class="upload">
   <file-upload
     class="uploadBtn"
-    id="uploadOld"
     label="Old friends JSON/HTML file"
     (fileText)="onBeforeFriendsFileUpload($event)"
   ></file-upload>
   <button
     class="detect"
     mat-raised-button
-    color="primary"
+    color="warn"
     (click)="onDetectFormerFriends()"
   >
     Show former friends
   </button>
   <file-upload
     class="uploadBtn"
-    id="uploadCurrent"
     label="Current friends JSON/HTML file"
     (fileText)="onCurrentFriendsFileUpload($event)"
   ></file-upload>

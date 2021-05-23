@@ -6,7 +6,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./file-upload.component.scss'],
 })
 export class FileUploadComponent {
-  @Input() id = '';
   @Input() label = '';
   @Output() fileText = new EventEmitter<string>();
 
@@ -22,13 +21,5 @@ export class FileUploadComponent {
     };
 
     fileReader.readAsText(file, '\u676f\u845b');
-  }
-
-  selectFile() {
-    console.log(this.id);
-    const fileUpload = document.getElementById(
-      'uploadFile'
-    ) as HTMLInputElement;
-    fileUpload.click();
   }
 }
