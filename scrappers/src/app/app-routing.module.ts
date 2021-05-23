@@ -5,7 +5,14 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'scrapper/facebook-friends',
+    redirectTo: 'scrapper/descriptions',
+  },
+  {
+    path: 'scrapper/descriptions',
+    loadChildren: () =>
+      import(
+        'src/app/scrappers/scrappers-description/scrappers-description.module'
+      ).then((m) => m.ScrappersDescriptionModule),
   },
   {
     path: 'scrapper/facebook-friends',
@@ -16,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'scrapper/facebook-friends',
+    redirectTo: 'scrapper/descriptions',
     pathMatch: 'full',
   },
 ];
