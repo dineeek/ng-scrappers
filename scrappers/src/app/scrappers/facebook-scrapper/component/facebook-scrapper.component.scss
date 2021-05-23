@@ -22,6 +22,12 @@
 .formerFriends {
   margin-top: 5vh;
 
+  .messages {
+    display: flex;
+    justify-content: space-between;
+    cursor: help;
+  }
+
   .box {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));

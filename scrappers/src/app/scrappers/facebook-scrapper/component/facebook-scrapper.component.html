@@ -53,10 +53,13 @@
 </div>
 
 <div class="formerFriends">
-  <span *ngIf="formerFriends.length"
-    >Number of former friends: {{ formerFriends.length }}</span
-  >
-  <span *ngIf="changesMessage">{{ changesMessage }}</span>
+  <div class="messages" *ngIf="formerFriends.length">
+    <span>Number of former friends: {{ formerFriends.length }}</span>
+    <mat-icon matTooltip="{{ resultsNoteMessage }}" matTooltipPosition="left"
+      >info</mat-icon
+    >
+  </div>
+  <span *ngIf="noChangesMessage">{{ noChangesMessage }}</span>
   <div class="box" *ngIf="formerFriends.length">
     <ng-container *ngFor="let formerFriend of formerFriends">
       <mat-list>

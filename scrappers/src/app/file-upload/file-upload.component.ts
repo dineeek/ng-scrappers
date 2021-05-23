@@ -21,6 +21,8 @@ export class FileUploadComponent {
       self.fileText.emit(String(fileReader.result));
     };
 
-    fileReader.readAsText(file);
+    if (file) {
+      fileReader.readAsText(file);
+    }
   }
 }

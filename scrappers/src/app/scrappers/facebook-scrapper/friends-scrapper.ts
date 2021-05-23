@@ -11,10 +11,10 @@ export function friendsScrapper(fileContent: string): string[] {
   return scrapeHTML(fileContent);
 }
 
-function tryParseJSON(content: string): object | boolean {
+function tryParseJSON(content: string): IFriends | boolean {
   try {
-    const o = JSON.parse(content);
-    if (o && typeof o === 'object') {
+    const o = JSON.parse(content) as IFriends;
+    if (o && typeof o === 'object' && o.friends) {
       return o;
     }
   } catch (e) {}
