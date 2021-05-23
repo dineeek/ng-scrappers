@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { detectFormerFriends, friendsScrapper } from './friends-scrapper';
+import { detectFormerFriends, friendsScrapper } from '../friends-scrapper';
 
 @Component({
   selector: 'app-facebook-scrapper',
@@ -14,12 +14,10 @@ export class FacebookScrapperComponent {
   constructor() {}
 
   onBeforeFriendsFileUpload(fileText: any): void {
-    console.log('DINo 1');
     this.oldFriends = friendsScrapper(fileText);
   }
 
   onCurrentFriendsFileUpload(fileText: any): void {
-    console.log('DINo 2');
     this.currentFriends = friendsScrapper(fileText);
   }
 

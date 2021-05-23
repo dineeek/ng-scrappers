@@ -1,2 +1,22 @@
-<router-outlet></router-outlet>
-<!--TODO: sidebar  with choosing wanted scraper-->
+<h1>Scrappers</h1>
+<mat-drawer-container class="drawer-container">
+  <mat-drawer mode="side" opened class="menu">
+    <mat-list>
+      <mat-list-item routerLink="scrapper/facebook-friends"
+        >Facebook friends</mat-list-item
+      >
+      <mat-divider></mat-divider>
+      <mat-list-item routerLink="scrapper/second-scrapper"
+        >Second scraper</mat-list-item
+      >
+      <mat-divider></mat-divider>
+      <mat-list-item routerLink="scrapper/third-scrapper"
+        >Third scrapper</mat-list-item
+      >
+      <mat-divider></mat-divider>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content class="content"
+    ><router-outlet></router-outlet
+  ></mat-drawer-content>
+</mat-drawer-container>

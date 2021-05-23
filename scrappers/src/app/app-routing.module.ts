@@ -8,11 +8,16 @@ const routes: Routes = [
     redirectTo: 'scrapper/facebook-friends',
   },
   {
-    path: 'scrapper',
+    path: 'scrapper/facebook-friends',
     loadChildren: () =>
-      import('src/app/scrappers/scrappers.module').then(
-        (m) => m.ScrappersModule
-      ),
+      import(
+        'src/app/scrappers/facebook-scrapper/facebook-scrapper.module'
+      ).then((m) => m.FacebookScrapperModule),
+  },
+  {
+    path: '**',
+    redirectTo: 'scrapper/facebook-friends',
+    pathMatch: 'full',
   },
 ];
 
