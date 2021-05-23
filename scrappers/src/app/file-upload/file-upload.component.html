@@ -2,6 +2,7 @@
   <input
     type="file"
     (change)="onChange($event.target.files)"
+    accept="{{ filesFormats }}"
     style="display: none"
   />
 

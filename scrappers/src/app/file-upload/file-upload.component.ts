@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class FileUploadComponent {
   @Input() label = '';
+  @Input() filesFormats = '';
   @Output() fileText = new EventEmitter<string>();
 
   constructor() {}

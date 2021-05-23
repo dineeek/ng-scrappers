@@ -11,6 +11,8 @@
   margin-top: 4vh;
 
   .box {
+    display: grid;
+    grid-template-columns: auto auto;
     max-height: 35vh;
     overflow-x: hidden;
     overflow-y: auto;
@@ -22,15 +24,15 @@
 
   .box {
     display: grid;
-    grid-template-columns: auto auto;
-    max-height: 42vh;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    max-height: 35vh;
     overflow-x: hidden;
     overflow-y: auto;
     border: 1px solid red;
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
   .upload {
     grid-template-columns: none;
     grid-template-rows: 1;
@@ -45,5 +47,27 @@
       margin-top: 10px;
       order: 2;
     }
+  }
+
+  .friends-containers .box {
+    max-height: 18vh;
+  }
+
+  .formerFriends {
+    margin-top: 2vh;
+    .box {
+      grid-template-columns: auto auto;
+      max-height: 22vh;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .friends-containers .box {
+    grid-template-columns: auto;
+  }
+
+  .formerFriends .box {
+    grid-template-columns: auto;
   }
 }

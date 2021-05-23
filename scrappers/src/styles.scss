@@ -9,3 +9,10 @@ body {
   margin: 2vw;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+@media screen and (max-width: 1000px) {
+  html,
+  body {
+    overflow: hidden;
+  }
+}

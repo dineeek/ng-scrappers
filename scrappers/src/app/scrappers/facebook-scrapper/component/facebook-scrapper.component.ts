@@ -15,10 +15,12 @@ export class FacebookScrapperComponent {
 
   onBeforeFriendsFileUpload(fileText: any): void {
     this.oldFriends = friendsScrapper(fileText);
+    this.formerFriends = [];
   }
 
   onCurrentFriendsFileUpload(fileText: any): void {
     this.currentFriends = friendsScrapper(fileText);
+    this.formerFriends = [];
   }
 
   onDetectFormerFriends(): void {
