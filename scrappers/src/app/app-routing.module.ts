@@ -22,6 +22,13 @@ const routes: Routes = [
       ).then((m) => m.FacebookScrapperModule),
   },
   {
+    path: 'scrapper/job-finder',
+    loadChildren: () =>
+      import('src/app/scrappers/job-finder/job-finder.module').then(
+        (m) => m.JobFinderModule
+      ),
+  },
+  {
     path: '**',
     redirectTo: 'scrapper/descriptions',
     pathMatch: 'full',

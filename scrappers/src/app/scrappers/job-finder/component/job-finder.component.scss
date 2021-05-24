@@ -1,0 +1,13 @@
+::ng-deep .mat-tab-body {
+  height: 84vh !important;
+}
+
+.jobs {
+  display: grid;
+  justify-content: center;
+
+  .hyperlinks {
+    cursor: pointer;
+    text-decoration: none;
+  }
+}

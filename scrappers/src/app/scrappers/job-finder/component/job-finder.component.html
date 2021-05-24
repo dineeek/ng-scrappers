@@ -1,0 +1,20 @@
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Cprsk">
+    <ng-template matTabContent>
+      <ng-container *ngFor="let job of getLoadedJobs(1)">
+        <mat-list class="jobs">
+          <a href="{{ job.url }}" class="hyperlinks">
+            <mat-list-item>{{ job.name }}</mat-list-item></a
+          >
+          <mat-divider></mat-divider>
+        </mat-list>
+      </ng-container>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Ding.jobs">
+    <ng-template matTabContent> Content 2 </ng-template>
+  </mat-tab>
+  <mat-tab label="MojPosao"
+    ><ng-template matTabContent> Content 3 </ng-template>
+  </mat-tab>
+</mat-tab-group>
