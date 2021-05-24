@@ -31,11 +31,21 @@ function scrapeCPRSK(http: HttpClient): IJob[] {
 
     contentSplit.forEach((content) => {
       const jobName = content.match(new RegExp('hreflang="und">(.*)<'));
+      const jobDate = content.match(new RegExp('<span>(.*)</span></span>'));
       const jobUrl = content.match(new RegExp('a href="(.*)" hreflang="und">'));
 
-      if (jobName?.length && jobName[1] && jobUrl?.length && jobUrl[1]) {
+      console.log(jobDate);
+      if (
+        jobName?.length &&
+        jobName[1] &&
+        jobDate?.length &&
+        jobDate[1] &&
+        jobUrl?.length &&
+        jobUrl[1]
+      ) {
         jobs.push({
           name: jobName[1],
+          date: jobDate[1],
           url: `https://cpsrk.foi.hr${jobUrl[1]}`,
         } as IJob);
       }

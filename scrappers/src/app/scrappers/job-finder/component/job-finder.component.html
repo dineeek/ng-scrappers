@@ -4,7 +4,7 @@
       <ng-container *ngFor="let job of getLoadedJobs(1)">
         <mat-list class="jobs">
           <a href="{{ job.url }}" class="hyperlinks">
-            <mat-list-item>{{ job.name }}</mat-list-item></a
+            <mat-list-item>{{ job.name + " - " + job.date }}</mat-list-item></a
           >
           <mat-divider></mat-divider>
         </mat-list>
