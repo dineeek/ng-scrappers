@@ -1,5 +1,5 @@
 <mat-tab-group mat-align-tabs="center">
-  <mat-tab label="Cprsk">
+  <mat-tab label="CPRSK">
     <ng-template matTabContent>
       <ng-container *ngFor="let job of getLoadedJobs(1)">
         <mat-list>
@@ -11,8 +11,11 @@
       </ng-container>
     </ng-template>
   </mat-tab>
-  <mat-tab label="Ding.jobs">
+  <mat-tab label="FER - Centar karijera">
     <ng-template matTabContent>
+      <span class="loading" *ngIf="!getLoadedJobs(2).length"
+        >Loading jobs, please wait...</span
+      >
       <ng-container *ngFor="let job of getLoadedJobs(2)">
         <mat-list>
           <a href="{{ job.url }}" class="hyperlinks">

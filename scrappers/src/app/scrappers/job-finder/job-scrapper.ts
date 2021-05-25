@@ -11,8 +11,9 @@ export function scrapeJobs(http: HttpClient, index: number): IJob[] {
     case 2:
       jobs = scrapeFER(http);
       break;
-    default:
-      jobs = [];
+    case 3:
+      //jobs = scrapeMojPosao(http);
+      break;
   }
   return jobs;
 }
@@ -34,14 +35,7 @@ function scrapeCPRSK(http: HttpClient): IJob[] {
       const jobDate = content.match(new RegExp('<span>(.*)</span></span>'));
       const jobUrl = content.match(new RegExp('a href="(.*)" hreflang="und">'));
 
-      if (
-        jobName?.length &&
-        jobName[1] &&
-        jobDate?.length &&
-        jobDate[1] &&
-        jobUrl?.length &&
-        jobUrl[1]
-      ) {
+      if (jobName && jobDate && jobUrl) {
         jobs.push({
           name: jobName[1],
           date: new Date(jobDate[1]).toLocaleDateString('hr'),
@@ -59,10 +53,41 @@ function scrapeFER(http: HttpClient): IJob[] {
 
   const pageHTML = getPageHTML(
     http,
-    'https://www.fer.unizg.hr/karijere/ponuda_poslova'
+    'https://cors-anywhere.herokuapp.com/https://www.fer.unizg.hr/karijere/ponuda_poslova'
   );
 
   pageHTML.then((html: string) => {
+    const contentSplit = html.split('<div class="news_article ');
+
+    contentSplit.forEach((content) => {
+      const jobName = content.match(
+        new RegExp('title="Pročitaj obavijest:(.*)"')
+      );
+      const jobDate = content.match(new RegExp('time datetime="(.*)">'));
+      const jobUrl = content.match(new RegExp('<a href="(.*)" title="'));
+
+      if (jobName && jobDate && jobUrl) {
+        jobs.push({
+          name: jobName[1],
+          date: new Date(jobDate[1]).toLocaleDateString('hr'),
+          url: `https://www.fer.unizg.hr${jobUrl[1]}`,
+        } as IJob);
+      }
+    });
+  });
+
+  return jobs;
+}
+
+function scrapeMojPosao(http: HttpClient): IJob[] {
+  const jobs: IJob[] = [];
+
+  const pageHTML = getPageHTML(
+    http,
+    'https://cors-anywhere.herokuapp.com/https://www.facebook.com/groups/it.jobs.croatia/'
+  );
+
+  pageHTML.then((html) => {
     console.log(html);
   });
 

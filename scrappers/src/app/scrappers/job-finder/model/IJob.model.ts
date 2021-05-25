@@ -1,5 +1,6 @@
 export interface IJob {
   name: string;
-  date: string;
+  location?: string;
+  date?: string;
   url: string;
 }
