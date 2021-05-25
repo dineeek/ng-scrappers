@@ -9,7 +9,7 @@ export function scrapeJobs(http: HttpClient, index: number): IJob[] {
       jobs = scrapeCPRSK(http);
       break;
     case 2:
-      //Ding.jobs
+      jobs = scrapeFER(http);
       break;
     default:
       jobs = [];
@@ -34,7 +34,6 @@ function scrapeCPRSK(http: HttpClient): IJob[] {
       const jobDate = content.match(new RegExp('<span>(.*)</span></span>'));
       const jobUrl = content.match(new RegExp('a href="(.*)" hreflang="und">'));
 
-      console.log(jobDate);
       if (
         jobName?.length &&
         jobName[1] &&
@@ -45,7 +44,7 @@ function scrapeCPRSK(http: HttpClient): IJob[] {
       ) {
         jobs.push({
           name: jobName[1],
-          date: jobDate[1],
+          date: new Date(jobDate[1]).toLocaleDateString('hr'),
           url: `https://cpsrk.foi.hr${jobUrl[1]}`,
         } as IJob);
       }
@@ -55,8 +54,17 @@ function scrapeCPRSK(http: HttpClient): IJob[] {
   return jobs;
 }
 
-function scrapeHZZ(http: HttpClient): IJob[] {
+function scrapeFER(http: HttpClient): IJob[] {
   const jobs: IJob[] = [];
+
+  const pageHTML = getPageHTML(
+    http,
+    'https://www.fer.unizg.hr/karijere/ponuda_poslova'
+  );
+
+  pageHTML.then((html: string) => {
+    console.log(html);
+  });
 
   return jobs;
 }
@@ -66,7 +74,7 @@ async function getPageHTML(
   url: string | string[]
 ): Promise<string> {
   if (url instanceof Array) {
-    let promises: Promise<string>[] = [];
+    const promises: Promise<string>[] = [];
     url.forEach((u) => {
       promises.push(
         http
@@ -80,9 +88,5 @@ async function getPageHTML(
     return (await Promise.all(promises)).join();
   }
 
-  return await http
-    .get(url, {
-      responseType: 'text',
-    })
-    .toPromise();
+  return await http.get(url, { responseType: 'text' }).toPromise();
 }

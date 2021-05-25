@@ -2,7 +2,7 @@
   <mat-tab label="Cprsk">
     <ng-template matTabContent>
       <ng-container *ngFor="let job of getLoadedJobs(1)">
-        <mat-list class="jobs">
+        <mat-list>
           <a href="{{ job.url }}" class="hyperlinks">
             <mat-list-item>{{ job.name + " - " + job.date }}</mat-list-item></a
           >
@@ -12,9 +12,26 @@
     </ng-template>
   </mat-tab>
   <mat-tab label="Ding.jobs">
-    <ng-template matTabContent> Content 2 </ng-template>
+    <ng-template matTabContent>
+      <ng-container *ngFor="let job of getLoadedJobs(2)">
+        <mat-list>
+          <a href="{{ job.url }}" class="hyperlinks">
+            <mat-list-item>{{ job.name + " - " + job.date }}</mat-list-item></a
+          >
+          <mat-divider></mat-divider>
+        </mat-list>
+      </ng-container>
+    </ng-template>
   </mat-tab>
   <mat-tab label="MojPosao"
-    ><ng-template matTabContent> Content 3 </ng-template>
+    ><ng-template matTabContent>
+      <ng-container *ngFor="let job of getLoadedJobs(3)">
+        <mat-list>
+          <a href="{{ job.url }}" class="hyperlinks">
+            <mat-list-item>{{ job.name + " - " + job.date }}</mat-list-item></a
+          >
+          <mat-divider></mat-divider>
+        </mat-list> </ng-container
+    ></ng-template>
   </mat-tab>
 </mat-tab-group>
